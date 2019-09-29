@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'twilio-ruby', '~> 5.27.0'
 
+gem 'bootstrap', '~> 4.3.1'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

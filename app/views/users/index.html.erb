@@ -1,0 +1,49 @@
+<div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+				<%= form_tag "/login", method: :post, autocomplete: "off" do %>
+          <div class="group">
+            <%= label_tag :email %>
+            <%= text_field_tag :email%>
+          </div>
+          <div class="group">
+            <%= label_tag :password %>
+            <%= password_field_tag :password %>
+          </div>
+          <div class="group">
+            <%= submit_tag "Login", class: "button" %>
+          </div>
+        <%end%>
+			</div>
+			<div class="sign-up-htm">
+      <%= form_tag "/users", method: :post, autocomplete: "off" do %>
+        <div class="group">
+          <%= label_tag :name %>
+          <%= text_field_tag :name %>
+        </div>
+        <div class="group">
+          <%= label_tag :email %>
+          <%= text_field_tag :email %>
+        </div>
+        <div class="group">
+          <%= label_tag :phone_number %>
+          <%= text_field_tag :phone_number %>
+        </div>
+        <div class="group">
+          <%= label_tag :password %>
+          <%= password_field_tag :password %>
+        </div>
+        <div class="group">
+          <%= label_tag :password_confirmation %>
+          <%= password_field_tag :password_confirmation %>
+        </div>
+        <div class="group">
+          <%= submit_tag "Sign Up", class: "button"%>
+        </div>
+      <% end %>
+		</div>
+	</div>
+</div>
