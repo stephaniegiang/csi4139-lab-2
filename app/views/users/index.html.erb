@@ -4,7 +4,7 @@
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
 		<div class="login-form">
 			<div class="sign-in-htm">
-				<%= form_tag "/login", method: :post, autocomplete: "off" do %>
+				<%= form_tag "/login", method: :get, autocomplete: "off" do %>
           <div class="group">
             <%= label_tag :email %>
             <%= text_field_tag :email%>
@@ -19,7 +19,7 @@
         <%end%>
 			</div>
 			<div class="sign-up-htm">
-      <%= form_tag "/users", method: :post, autocomplete: "off" do %>
+      <%= form_tag '/users', method: :post, autocomplete: "off" do %>
         <div class="group">
           <%= label_tag :name %>
           <%= text_field_tag :name %>

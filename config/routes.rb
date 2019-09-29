@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/login'
-  get 'users/sign_up'
-  get 'authenticate/index'
+  resource :users, only: [:create, :destroy]
 
   root 'users#index'
 end
