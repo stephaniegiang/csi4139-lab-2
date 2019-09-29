@@ -1,24 +1,30 @@
 class UsersController < ApplicationController
-  before_action :validate_password, only: :create
+  ATTRIBUTE_WHITELIST = [
+    :first_name, 
+    :last_name,
+    :email,
+    :phone_number,
+    :password,
+    :password_confirmation
+  ]
   def index; end
 
-  def login; end
-
-  def sign_up; end
-
   def create
-    User.create(
-      name: params[:name],
-      email: params[:email],
-      password: params[:password]
-    )
+    user = User.new(user_params)
+    if user.save
+      session[:user_id] = @user.id
+      ConfirmationSender.send_confirmation_to(@user)
+      redirect_to new_confirmation_path
+    else 
+      flash[:error] = "Passwords do not match. Please try again."
+    end
+    redirect_to root_path
   end
 
   private
 
-  def validate_password
-    return true if params[:password] == params[:password_confirmation]
-    flash[:warning] = "Passwords do not match"
-    redirect_to root_path
+  def user_params
+    params.require(:user).permit(ATTRIBUTE_WHITELIST)
   end
+
 end

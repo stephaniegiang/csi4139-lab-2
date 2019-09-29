@@ -21,8 +21,12 @@
 			<div class="sign-up-htm">
       <%= form_tag '/users', method: :post, autocomplete: "off" do %>
         <div class="group">
-          <%= label_tag :name %>
-          <%= text_field_tag :name %>
+          <%= label_tag :first_name %>
+          <%= text_field_tag :first_name %>
+        </div>
+        <div class="group">
+          <%= label_tag :last_name %>
+          <%= text_field_tag :last_name %>
         </div>
         <div class="group">
           <%= label_tag :email %>
