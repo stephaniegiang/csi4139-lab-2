@@ -4,7 +4,7 @@ class ConfirmationsController < ApplicationController
   end
 
   def create
-    @user = User.find params[:user_id]
+    @user = User.find(session[:user_id])
     if @user.verification_code == params[:verification_code]
       @user.confirm!
       session[:authenticated] = true
