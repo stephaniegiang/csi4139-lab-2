@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_29_231432) do
+ActiveRecord::Schema.define(version: 2019_09_30_000335) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_09_29_231432) do
     t.string "phone_number"
     t.string "first_name"
     t.string "last_name"
+    t.string "verification_code"
   end
 
 end
