@@ -11,7 +11,7 @@ class ConfirmationsController < ApplicationController
     if response.ok?
       session[:authenticated] = true
       flash[:notice] = "Welcome #{@user.first_name}. The Adventure Begins!"
-      redirect_to secrets_path
+      redirect_to pages_path
     else
       flash[:error] = "Verification code is incorrect."
       render :new

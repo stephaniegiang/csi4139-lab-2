@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  extend ConfirmationSender
   ATTRIBUTE_WHITELIST = [
     :first_name, 
     :last_name,
@@ -26,6 +25,22 @@ class UsersController < ApplicationController
       flash[:error] = "Passwords do not match. Please try again."
       redirect_to root_path
     end
+  end
+
+  def login 
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to new_confirmation_path
+    else
+      flash[:error] = "Invalid email or password. Please try again."
+      redirect_to root_path
+    end
+  end
+
+  def logout
+    reset_session
+    redirect_to root_path
   end
 
   private
